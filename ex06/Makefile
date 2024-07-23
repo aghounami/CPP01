@@ -1,0 +1,22 @@
+NAME = harlFilter
+
+CC = c++ -std=c++98
+
+CFLAGS = -Wall -Wextra -Werror
+
+src = main.cpp Harl.cpp
+
+obj = $(src:.cpp=.o)
+
+all : $(NAME) clean
+
+$(NAME) : $(obj)
+	$(CC) $(CFLAGS) $(obj) -o $(NAME)
+
+clean:
+	rm -f $(obj)
+
+fclean : clean
+	rm -f $(NAME)
+
+re : fclean

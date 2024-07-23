@@ -8,7 +8,7 @@ Zombie::Zombie()
 
 Zombie::~Zombie()
 {
-    std::cout << "Zombie" << _name << " destructor called" << std::endl;
+    std::cout << _name << " destructor called" << std::endl;
 }
 
 void    Zombie::setName(std::string name)
@@ -18,29 +18,28 @@ void    Zombie::setName(std::string name)
 
 void    Zombie::announce()
 {
-    std::cout << "      My name is " << _name << std::endl;
+    std::cout << "  My name is " << _name << std::endl;
 }
 
 Zombie* zombieHorde( int N, std::string name )
 {
     (void)name;
     Zombie *zombie = new Zombie[N];
-    std::cout << "      ------------------" << std::endl;
     for(int i = 0; i < N; i++)
-    {
         zombie[i].setName(name);
-    }
     return zombie;
 }
 
+void f()
+{
+    system("leaks moar_brainzzz");
+}
 int main()
 {
-    Zombie *zombie = zombieHorde(5, " Undead");
-
+    atexit(f);
+    Zombie *zombie = zombieHorde(5, "walker");
     for (int i = 0; i < 5; i++)
-    {
        zombie[i].announce();
-    }
     delete [] zombie;
     return 0;   
 }
